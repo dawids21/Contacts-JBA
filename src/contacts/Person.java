@@ -50,7 +50,7 @@ public class Person extends Contact {
     }
 
     enum Genders {
-        MALE, FEMALE
+        MALE, FEMALE, INVALID
     }
 
     enum Data implements ContactData {
