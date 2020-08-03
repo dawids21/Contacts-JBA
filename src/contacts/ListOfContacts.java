@@ -2,14 +2,17 @@ package contacts;
 
 import java.util.ArrayList;
 
-public class ListOfPeople {
-    ArrayList<Person> records = new ArrayList<>();
+public class ListOfContacts {
 
-    public ListOfPeople() {}
+    ArrayList<Contact> records = new ArrayList<>();
+
+    public ListOfContacts() {
+    }
 
     public void addRecord(String name, String surname, String phoneNumber) {
         var person = new Person(name, surname, phoneNumber);
-        if (!phoneNumber.equals("") && person.getPhoneNumber().equals("")) {
+        if (!phoneNumber.equals("") && person.getPhoneNumber()
+                                             .equals("")) {
             System.out.println("Wrong number format!");
         }
         records.add(person);
@@ -34,7 +37,8 @@ public class ListOfPeople {
                 break;
             case "number":
                 person.setPhoneNumber(value);
-                if (!value.equals("") && person.getPhoneNumber().equals("")) {
+                if (!value.equals("") && person.getPhoneNumber()
+                                               .equals("")) {
                     System.out.println("Wrong number format!");
                 }
                 System.out.println("The record updated!");
@@ -57,9 +61,8 @@ public class ListOfPeople {
     public void listRecords() {
         int index = 1;
         for (var person : records) {
-            System.out.println(index + ". " + person.getName() + " " + person.getSurname() + ", " + (person.hasNumber() ?
-                                                                                                             person.getPhoneNumber() :
-                                                                                                             "[no number]"));
+            System.out.println(index + ". " + person.getName() + " " + person.getSurname() + ", " +
+                               (person.hasNumber() ? person.getPhoneNumber() : "[no number]"));
             index++;
         }
     }

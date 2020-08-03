@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         setState(AppStates.MENU);
         final var input = new Scanner(System.in);
-        final var listOfPeople = new ListOfPeople();
+        final var listOfContacts = new ListOfContacts();
 
         while (true) {
             switch (getState()) {
@@ -33,14 +33,14 @@ public class Main {
                     surname = input.nextLine();
                     System.out.print("Enter the number: ");
                     phoneNumber = input.nextLine();
-                    listOfPeople.addRecord(name, surname, phoneNumber);
+                    listOfContacts.addRecord(name, surname, phoneNumber);
                     setState(AppStates.MENU);
                     break;
                 case EDIT:
-                    if (listOfPeople.size() == 0) {
+                    if (listOfContacts.size() == 0) {
                         System.out.println("No records to edit!");
                     } else {
-                        listOfPeople.listRecords();
+                        listOfContacts.listRecords();
                         int indexOfRecord;
                         String field = "";
                         String value = "";
@@ -54,15 +54,15 @@ public class Main {
                         } catch (NumberFormatException e) {
                             indexOfRecord = 0;
                         }
-                        listOfPeople.editRecord(indexOfRecord - 1, field, value);
+                        listOfContacts.editRecord(indexOfRecord - 1, field, value);
                     }
                     setState(AppStates.MENU);
                     break;
                 case REMOVE:
-                    if (listOfPeople.size() == 0) {
+                    if (listOfContacts.size() == 0) {
                         System.out.println("No records to remove!");
                     } else {
-                        listOfPeople.listRecords();
+                        listOfContacts.listRecords();
                         int index;
                         try {
                             System.out.print("Select a record: ");
@@ -71,16 +71,16 @@ public class Main {
                             System.out.println("You have to input correct index");
                             index = 0;
                         }
-                        listOfPeople.removeRecord(index - 1);
+                        listOfContacts.removeRecord(index - 1);
                     }
                     setState(AppStates.MENU);
                     break;
                 case COUNT:
-                    System.out.println("The Phone Book has " + listOfPeople.size() + " records.");
+                    System.out.println("The Phone Book has " + listOfContacts.size() + " records.");
                     setState(AppStates.MENU);
                     break;
                 case LIST:
-                    listOfPeople.listRecords();
+                    listOfContacts.listRecords();
                     setState(AppStates.MENU);
                     break;
             }
@@ -120,11 +120,6 @@ public class Main {
     }
 
     enum AppStates {
-        MENU,
-        ADD,
-        EDIT,
-        REMOVE,
-        COUNT,
-        LIST
+        MENU, ADD, EDIT, REMOVE, COUNT, LIST
     }
 }
