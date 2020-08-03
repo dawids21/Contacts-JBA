@@ -52,6 +52,6 @@ public class Person extends Contact {
     }
 
     enum Data implements ContactData {
-        NAME, SURNAME, BIRTH_DATE, GENDER
+        NAME, SURNAME, BIRTH_DATE, GENDER, PHONE_NUMBER
     }
 }
