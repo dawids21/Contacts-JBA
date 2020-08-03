@@ -9,10 +9,12 @@ public class Person extends Contact {
     private LocalDate birthDate;
     private Genders gender;
 
-    public Person(String name, String surname, String phoneNumber) {
+    public Person(String name, String surname, LocalDate birthDate, Genders gender, String phoneNumber) {
         super(phoneNumber);
         this.name = name;
         this.surname = surname;
+        this.birthDate = birthDate;
+        this.gender = gender;
     }
 
     public String getName() {
