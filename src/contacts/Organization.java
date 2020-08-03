@@ -2,8 +2,8 @@ package contacts;
 
 public class Organization extends Contact {
 
-    private final String name;
-    private final String address;
+    private String name;
+    private String address;
 
     public Organization(String name, String address) {
         this.name = name;
