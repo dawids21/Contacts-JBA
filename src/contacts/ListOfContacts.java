@@ -83,9 +83,8 @@ public class ListOfContacts {
 
     public void listRecords() {
         int index = 1;
-        for (var person : records) {
-            System.out.println(index + ". " + person.getName() + " " + person.getSurname() + ", " +
-                               (person.hasNumber() ? person.getPhoneNumber() : "[no number]"));
+        for (var record : records) {
+            System.out.println(record.toString());
             index++;
         }
     }

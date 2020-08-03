@@ -53,5 +53,8 @@ public class Person extends Contact {
         MALE, FEMALE, INVALID
     }
 
+    @Override
+    public String toString() { //TODO
+        return getName() + " " + getSurname() + ", " + (hasNumber() ? getPhoneNumber() : "[no number]");
     }
 }
