@@ -26,8 +26,4 @@ public class Organization extends Contact {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    enum Data implements ContactData {
-        NAME, ADDRESS, PHONE_NUMBER
-    }
 }
