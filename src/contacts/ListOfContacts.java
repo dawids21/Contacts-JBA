@@ -9,13 +9,8 @@ public class ListOfContacts {
     public ListOfContacts() {
     }
 
-    public void addRecord(String name, String surname, String phoneNumber) {
-        var person = new Person(name, surname, phoneNumber);
-        if (!phoneNumber.equals("") && person.getPhoneNumber()
-                                             .equals("")) {
-            System.out.println("Wrong number format!");
-        }
-        records.add(person);
+    public void addRecord(Contact record) {
+        records.add(record);
         System.out.println("The record added.");
     }
 
