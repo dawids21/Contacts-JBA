@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class PersonFactory implements ContactFactory {
 
     public PersonFactory() {
-
     }
 
     @Override
@@ -45,14 +44,10 @@ public class PersonFactory implements ContactFactory {
 
         System.out.print("Enter the phone number: ");
         var phoneNumber = input.nextLine();
-        if (!checkNumber(phoneNumber)) {
+        if (!ContactFactory.checkNumber(phoneNumber)) {
             phoneNumber = "";
             System.out.println("Wrong number format!");
         }
         return new Person(name, surname, birthDate, gender, phoneNumber);
-    }
-
-    private boolean checkNumber(String phoneNumber) {
-        return phoneNumber.matches("\\+?(\\w+[ -]\\(\\w{2,}\\)([ -]\\w{2,})*|(\\w+|\\(\\w+\\))([ -]\\w{2,})*)");
     }
 }
