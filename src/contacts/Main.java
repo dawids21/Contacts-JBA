@@ -11,6 +11,8 @@ public class Main {
         setState(AppStates.MENU);
         final var input = new Scanner(System.in);
         final var listOfContacts = new ListOfContacts();
+        final ContactFactory personFactory = new PersonFactory();
+        final ContactFactory organizationFactory = new OrganizationFactory();
 
         while (true) {
             switch (getState()) {
@@ -24,16 +26,23 @@ public class Main {
                     }
                     break;
                 case ADD:
-                    String name;
-                    String surname;
-                    String phoneNumber;
-                    System.out.print("Enter the name: ");
-                    name = input.nextLine();
-                    System.out.print("Enter the surname: ");
-                    surname = input.nextLine();
-                    System.out.print("Enter the number: ");
-                    phoneNumber = input.nextLine();
-                    listOfContacts.addRecord(name, surname, phoneNumber);
+                    System.out.print("Enter the type (person, organization): ");
+                    var type = input.nextLine();
+                    Contact record;
+                    switch (type.toLowerCase()) {
+                        case "person":
+                            record = personFactory.createContact(input);
+                            break;
+                        case "organization":
+                            record = organizationFactory.createContact(input);
+                            break;
+                        default:
+                            record = null;
+                            break;
+                    }
+                    if (record != null) {
+                        listOfContacts.addRecord(record);
+                    }
                     setState(AppStates.MENU);
                     break;
                 case EDIT:
