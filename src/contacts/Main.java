@@ -13,6 +13,8 @@ public class Main {
         final var listOfContacts = new ListOfContacts();
         final ContactFactory personFactory = new PersonFactory();
         final ContactFactory organizationFactory = new OrganizationFactory();
+        final ContactEditor personEditor = new PersonEditor();
+        final ContactEditor organizationEditor = new OrganizationEditor();
 
         while (true) {
             switch (getState()) {
@@ -60,9 +62,9 @@ public class Main {
                         if (indexOfRecord != 0) {
                             var contact = listOfContacts.getRecord(indexOfRecord);
                             if (contact instanceof Person) {
-
+                                personEditor.edit(input, listOfContacts, indexOfRecord);
                             } else if (contact instanceof Organization) {
-
+                                organizationEditor.edit(input, listOfContacts, indexOfRecord);
                             }
                         }
                     }
