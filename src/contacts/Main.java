@@ -61,11 +61,11 @@ public class Main {
                             indexOfRecord = 0;
                         }
                         if (indexOfRecord != 0) {
-                            var contact = listOfContacts.getRecord(indexOfRecord);
+                            var contact = listOfContacts.getRecord(indexOfRecord - 1);
                             if (contact instanceof Person) {
-                                personEditor.edit(input, listOfContacts, indexOfRecord);
+                                personEditor.edit(input, listOfContacts, indexOfRecord - 1);
                             } else if (contact instanceof Organization) {
-                                organizationEditor.edit(input, listOfContacts, indexOfRecord);
+                                organizationEditor.edit(input, listOfContacts, indexOfRecord - 1);
                             }
                         }
                     }
