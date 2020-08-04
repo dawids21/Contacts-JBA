@@ -85,7 +85,12 @@ public class Main {
                             System.out.print("You have to input correct index");
                             index = 0;
                         }
-                        listOfContacts.removeRecord(index - 1);
+                        if (index > 0 && index <= listOfContacts.size()) {
+                            listOfContacts.removeRecord(index - 1);
+                            System.out.print("The record removed!");
+                        } else {
+                            System.out.print("There is no such record");
+                        }
                     }
                     System.out.println();
                     setState(AppStates.MENU);

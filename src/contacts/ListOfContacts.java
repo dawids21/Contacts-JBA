@@ -19,12 +19,7 @@ public class ListOfContacts {
     }
 
     public void removeRecord(int index) {
-        if (index >= records.size()) {
-            System.out.println("There is no such record");
-        } else if (index >= 0) {
-            records.remove(index);
-            System.out.println("The record removed!");
-        }
+        records.remove(index);
     }
 
     public void listRecords() {
