@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class PersonFactory implements ContactFactory {
+public class PersonFactory extends ContactFactory {
 
     public PersonFactory() {
     }
@@ -44,7 +44,7 @@ public class PersonFactory implements ContactFactory {
 
         System.out.print("Enter the phone number: ");
         var phoneNumber = input.nextLine();
-        if (!ContactFactory.checkNumber(phoneNumber)) {
+        if (!checkNumber(phoneNumber)) {
             phoneNumber = "";
             System.out.println("Wrong number format!");
         }

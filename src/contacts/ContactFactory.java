@@ -2,11 +2,11 @@ package contacts;
 
 import java.util.Scanner;
 
-public interface ContactFactory {
+public abstract class ContactFactory {
 
-    Contact createContact(Scanner input);
+    public abstract Contact createContact(Scanner input);
 
-    static boolean checkNumber(String phoneNumber) {
+    protected boolean checkNumber(String phoneNumber) {
         return phoneNumber.matches("\\+?(\\w+[ -]\\(\\w{2,}\\)([ -]\\w{2,})*|(\\w+|\\(\\w+\\))([ -]\\w{2,})*)");
     }
 }
