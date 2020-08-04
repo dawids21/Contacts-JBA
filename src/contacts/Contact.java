@@ -4,10 +4,6 @@ public abstract class Contact {
 
     private String phoneNumber;
 
-    protected Contact() {
-        setPhoneNumber("");
-    }
-
     protected Contact(String phoneNumber) {
         setPhoneNumber(phoneNumber);
     }
