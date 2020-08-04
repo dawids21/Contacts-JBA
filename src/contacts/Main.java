@@ -45,11 +45,12 @@ public class Main {
                     if (record != null) {
                         listOfContacts.addRecord(record);
                     }
+                    System.out.println();
                     setState(AppStates.MENU);
                     break;
                 case EDIT:
                     if (listOfContacts.size() == 0) {
-                        System.out.println("No records to edit!");
+                        System.out.print("No records to edit!");
                     } else {
                         listOfContacts.listRecords();
                         int indexOfRecord;
@@ -68,11 +69,12 @@ public class Main {
                             }
                         }
                     }
+                    System.out.println();
                     setState(AppStates.MENU);
                     break;
                 case REMOVE:
                     if (listOfContacts.size() == 0) {
-                        System.out.println("No records to remove!");
+                        System.out.print("No records to remove!");
                     } else {
                         listOfContacts.listRecords();
                         int index;
@@ -80,15 +82,17 @@ public class Main {
                             System.out.print("Select a record: ");
                             index = Integer.parseInt(input.nextLine());
                         } catch (InputMismatchException e) {
-                            System.out.println("You have to input correct index");
+                            System.out.print("You have to input correct index");
                             index = 0;
                         }
                         listOfContacts.removeRecord(index - 1);
                     }
+                    System.out.println();
                     setState(AppStates.MENU);
                     break;
                 case COUNT:
-                    System.out.println("The Phone Book has " + listOfContacts.size() + " records.");
+                    System.out.print("The Phone Book has " + listOfContacts.size() + " records.");
+                    System.out.println();
                     setState(AppStates.MENU);
                     break;
                 case INFO:
@@ -98,11 +102,12 @@ public class Main {
                     try {
                         index = Integer.parseInt(input.nextLine());
                     } catch (InputMismatchException e) {
-                        System.out.println("You have to input correct index");
+                        System.out.print("You have to input correct index");
                         index = 0;
                     }
                     listOfContacts.getRecord(index)
                                   .getInfo();
+                    System.out.println();
                     setState(AppStates.MENU);
                     break;
             }
