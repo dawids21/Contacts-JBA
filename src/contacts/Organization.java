@@ -28,6 +28,15 @@ public class Organization extends Contact {
     }
 
     @Override
+    public void getInfo() {
+        System.out.println("Name: " + getName());
+        System.out.println("Address: " + getAddress());
+        System.out.println("Number: " + (hasNumber() ? getPhoneNumber() : "[no data]"));
+        System.out.println("Time created: " + getTimeCreated());
+        System.out.println("Time last edit: " + getTimeEdited());
+    }
+
+    @Override
     public String toString() {
         return name;
     }
