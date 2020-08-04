@@ -9,7 +9,7 @@ public class OrganizationFactory extends ContactFactory {
 
     @Override
     public Contact createContact(Scanner input) {
-        System.out.print("Enter the name: ");
+        System.out.print("Enter the organization name: ");
         var name = input.nextLine();
 
         System.out.print("Enter the address: ");

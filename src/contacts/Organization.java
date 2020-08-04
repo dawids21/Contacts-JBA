@@ -29,7 +29,7 @@ public class Organization extends Contact {
 
     @Override
     public void getInfo() {
-        System.out.println("Name: " + getName());
+        System.out.println("Organization name: " + getName());
         System.out.println("Address: " + getAddress());
         System.out.println("Number: " + (hasNumber() ? getPhoneNumber() : "[no data]"));
         System.out.println("Time created: " + getTimeCreated());

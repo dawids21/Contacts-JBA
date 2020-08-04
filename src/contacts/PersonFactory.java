@@ -23,10 +23,11 @@ public class PersonFactory extends ContactFactory {
         try {
             birthDate = LocalDate.parse(birthDateString);
         } catch (DateTimeParseException e) {
+            System.out.println("Bad birth date!");
             birthDate = null;
         }
 
-        System.out.print("Enter the surname: ");
+        System.out.print("Enter the gender: ");
         var genderString = input.nextLine();
         Person.Genders gender;
         switch (genderString) {
@@ -37,7 +38,7 @@ public class PersonFactory extends ContactFactory {
                 gender = Person.Genders.FEMALE;
                 break;
             default:
-                System.out.println("Bad gender");
+                System.out.println("Bad gender!");
                 gender = Person.Genders.INVALID;
                 break;
         }

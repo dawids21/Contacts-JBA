@@ -14,7 +14,7 @@ public abstract class ContactEditor {
         String value = "";
         printOptions();
         field = input.nextLine();
-        System.out.print("Enter the " + field + ": ");
+        System.out.print("Enter " + field + ": ");
         value = input.nextLine();
         editContact(list, index, field, value);
         list.getRecord(index).setTimeEdited(LocalDateTime.now());
