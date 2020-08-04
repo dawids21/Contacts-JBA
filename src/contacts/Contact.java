@@ -1,11 +1,28 @@
 package contacts;
 
+import java.time.LocalDateTime;
+
 public abstract class Contact {
 
+    private final LocalDateTime timeCreated;
+    private LocalDateTime timeEdited;
     private String phoneNumber;
 
     protected Contact(String phoneNumber) {
+        timeCreated = LocalDateTime.now();
         setPhoneNumber(phoneNumber);
+    }
+
+    public LocalDateTime getTimeCreated() {
+        return timeCreated;
+    }
+
+    public LocalDateTime getTimeEdited() {
+        return timeEdited;
+    }
+
+    public void setTimeEdited(LocalDateTime timeEdited) {
+        this.timeEdited = timeEdited;
     }
 
     public String getPhoneNumber() {
