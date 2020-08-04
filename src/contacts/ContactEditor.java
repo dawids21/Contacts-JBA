@@ -1,5 +1,6 @@
 package contacts;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public abstract class ContactEditor {
@@ -16,6 +17,7 @@ public abstract class ContactEditor {
         System.out.print("Enter the " + field + ": ");
         value = input.nextLine();
         editContact(list, index, field, value);
+        list.getRecord(index).setTimeEdited(LocalDateTime.now());
     }
 
     protected abstract void printOptions();
