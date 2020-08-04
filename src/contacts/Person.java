@@ -71,7 +71,20 @@ public class Person extends Contact {
     }
 
     enum Genders {
-        MALE, FEMALE, INVALID
+        MALE, FEMALE, INVALID;
+
+        @Override
+        public String toString() {
+            String str;
+            if (this == MALE) {
+                str = "Male";
+            } else if (this == FEMALE) {
+                str = "Female";
+            } else {
+                str = "[no data]";
+            }
+            return str;
+        }
     }
 
     @Override
