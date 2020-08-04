@@ -1,6 +1,7 @@
 package contacts;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class Person extends Contact {
 
@@ -39,6 +40,14 @@ public class Person extends Contact {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        try {
+            this.birthDate = LocalDate.parse(birthDate);
+        } catch (DateTimeParseException e) {
+            this.birthDate = null;
+        }
     }
 
     public Genders getGender() {
