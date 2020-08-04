@@ -51,19 +51,20 @@ public class Main {
                     } else {
                         listOfContacts.listRecords();
                         int indexOfRecord;
-                        String field = "";
-                        String value = "";
+                        System.out.print("Select a record: ");
                         try {
-                            System.out.print("Select a record: ");
                             indexOfRecord = Integer.parseInt(input.nextLine());
-                            System.out.print("Select a field (name, surname, number): ");
-                            field = input.nextLine();
-                            System.out.print("Enter the " + field + ": ");
-                            value = input.nextLine();
                         } catch (NumberFormatException e) {
                             indexOfRecord = 0;
                         }
-                        listOfContacts.editRecord(indexOfRecord - 1, field, value);
+                        if (indexOfRecord != 0) {
+                            var contact = listOfContacts.getRecord(indexOfRecord);
+                            if (contact instanceof Person) {
+
+                            } else if (contact instanceof Organization) {
+
+                            }
+                        }
                     }
                     setState(AppStates.MENU);
                     break;

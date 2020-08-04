@@ -14,6 +14,10 @@ public class ListOfContacts {
         System.out.println("The record added.");
     }
 
+    public Contact getRecord(int index) {
+        return records.get(index);
+    }
+
     public void editRecord(int index, String field, String value) { //TODO
         if (index < 0 || index > records.size()) {
             System.out.println("There is no such record");
