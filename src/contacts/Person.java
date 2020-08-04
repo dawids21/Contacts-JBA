@@ -58,6 +58,18 @@ public class Person extends Contact {
         this.gender = gender;
     }
 
+    public void setGender(String gender) {
+        if (gender.toLowerCase()
+                  .equals("m")) {
+            this.gender = Genders.MALE;
+        } else if (gender.toLowerCase()
+                         .equals("f")) {
+            this.gender = Genders.FEMALE;
+        } else {
+            this.gender = Genders.INVALID;
+        }
+    }
+
     enum Genders {
         MALE, FEMALE, INVALID
     }
