@@ -9,7 +9,8 @@ public abstract class Contact {
     private String phoneNumber;
 
     protected Contact(String phoneNumber) {
-        timeCreated = LocalDateTime.now();
+        timeCreated = LocalDateTime.now().withSecond(0).withNano(0);
+        setTimeEdited(LocalDateTime.now());
         setPhoneNumber(phoneNumber);
     }
 
@@ -22,7 +23,7 @@ public abstract class Contact {
     }
 
     public void setTimeEdited(LocalDateTime timeEdited) {
-        this.timeEdited = timeEdited;
+        this.timeEdited = timeEdited.withSecond(0).withNano(0);
     }
 
     public String getPhoneNumber() {
