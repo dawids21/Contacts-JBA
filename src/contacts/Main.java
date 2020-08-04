@@ -91,7 +91,7 @@ public class Main {
                     System.out.println("The Phone Book has " + listOfContacts.size() + " records.");
                     setState(AppStates.MENU);
                     break;
-                case LIST:
+                case INFO:
                     listOfContacts.listRecords();
                     setState(AppStates.MENU);
                     break;
@@ -115,7 +115,7 @@ public class Main {
                 setState(AppStates.COUNT);
                 break;
             case "list":
-                setState(AppStates.LIST);
+                setState(AppStates.INFO);
                 break;
             default:
                 System.out.println("Incorrect action");
@@ -132,6 +132,6 @@ public class Main {
     }
 
     enum AppStates {
-        MENU, ADD, EDIT, REMOVE, COUNT, LIST
+        MENU, ADD, EDIT, REMOVE, COUNT, INFO
     }
 }
