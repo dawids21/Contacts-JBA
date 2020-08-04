@@ -110,8 +110,12 @@ public class Main {
                         System.out.print("You have to input correct index");
                         index = 0;
                     }
-                    listOfContacts.getRecord(index)
-                                  .getInfo();
+                    if (index > 0 && index <= listOfContacts.size()) {
+                        listOfContacts.getRecord(index - 1)
+                                      .getInfo();
+                    } else {
+                        System.out.print("There is no such record");
+                    }
                     System.out.println();
                     setState(AppStates.MENU);
                     break;
