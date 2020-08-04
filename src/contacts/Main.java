@@ -93,6 +93,16 @@ public class Main {
                     break;
                 case INFO:
                     listOfContacts.listRecords();
+                    int index;
+                    System.out.print("Enter index to show info: ");
+                    try {
+                        index = Integer.parseInt(input.nextLine());
+                    } catch (InputMismatchException e) {
+                        System.out.println("You have to input correct index");
+                        index = 0;
+                    }
+                    listOfContacts.getRecord(index)
+                                  .getInfo();
                     setState(AppStates.MENU);
                     break;
             }
