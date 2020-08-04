@@ -31,4 +31,6 @@ public abstract class Contact {
     public boolean hasNumber() {
         return !phoneNumber.equals("");
     }
+
+    public abstract void getInfo();
 }
