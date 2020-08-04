@@ -19,7 +19,7 @@ public class Main {
         while (true) {
             switch (getState()) {
                 case MENU:
-                    System.out.print("Enter action (add, remove, edit, count, list, exit): ");
+                    System.out.print("Enter action (add, remove, edit, count, info, exit): ");
                     var action = input.nextLine();
                     if (action.equals("exit")) {
                         System.exit(0);
@@ -124,7 +124,7 @@ public class Main {
             case "count":
                 setState(AppStates.COUNT);
                 break;
-            case "list":
+            case "info":
                 setState(AppStates.INFO);
                 break;
             default:
