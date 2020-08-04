@@ -11,10 +11,10 @@ public class Main {
         setState(AppStates.MENU);
         final var input = new Scanner(System.in);
         final var listOfContacts = new ListOfContacts();
-        final ContactFactory personFactory = new PersonFactory();
-        final ContactFactory organizationFactory = new OrganizationFactory();
-        final ContactEditor personEditor = new PersonEditor();
-        final ContactEditor organizationEditor = new OrganizationEditor();
+        final var personFactory = new PersonFactory();
+        final var organizationFactory = new OrganizationFactory();
+        final var personEditor = new PersonEditor();
+        final var organizationEditor = new OrganizationEditor();
 
         while (true) {
             switch (getState()) {
