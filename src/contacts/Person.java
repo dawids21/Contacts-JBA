@@ -88,6 +88,17 @@ public class Person extends Contact {
     }
 
     @Override
+    public void getInfo() {
+        System.out.println("Name: " + getName());
+        System.out.println("Surname: " + getSurname());
+        System.out.println("Birth date: " + (getBirthDate() != null ? getBirthDate() : "[no data]"));
+        System.out.println("Gender: " + getGender());
+        System.out.println("Number: " + (hasNumber() ? getPhoneNumber() : "[no data]"));
+        System.out.println("Time created: " + getTimeCreated());
+        System.out.println("Time last edit: " + getTimeEdited());
+    }
+
+    @Override
     public String toString() {
         return getName() + " " + getSurname();
     }
