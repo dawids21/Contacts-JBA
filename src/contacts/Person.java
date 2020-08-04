@@ -75,7 +75,7 @@ public class Person extends Contact {
     }
 
     @Override
-    public String toString() { //TODO
-        return getName() + " " + getSurname() + ", " + (hasNumber() ? getPhoneNumber() : "[no number]");
+    public String toString() {
+        return getName() + " " + getSurname();
     }
 }

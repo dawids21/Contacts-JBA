@@ -30,7 +30,7 @@ public class ListOfContacts {
     public void listRecords() {
         int index = 1;
         for (var record : records) {
-            System.out.println(record.toString());
+            System.out.println(index + ". " + record.toString());
             index++;
         }
     }
