@@ -18,7 +18,6 @@ public class OrganizationFactory extends ContactFactory {
         System.out.print("Enter the phone number: ");
         var phoneNumber = input.nextLine();
         if (!checkNumber(phoneNumber)) {
-            phoneNumber = "";
             System.out.println("Wrong number format!");
         }
 
