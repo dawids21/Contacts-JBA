@@ -192,6 +192,6 @@ public class Main {
     }
 
     enum AppStates {
-        MENU, ADD, EDIT, REMOVE, COUNT, INFO;
+        MENU, SEARCH, RECORD, LIST
     }
 }
