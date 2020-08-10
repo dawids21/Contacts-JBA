@@ -38,19 +38,23 @@ public class Person extends Contact {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public boolean setBirthDate(String birthDate) {
+        boolean success = true;
         try {
             this.birthDate = LocalDate.parse(birthDate);
         } catch (DateTimeParseException e) {
             this.birthDate = null;
+            success = false;
         }
+        return success;
     }
 
     public Genders getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public boolean setGender(String gender) {
+        boolean success = true;
         if (gender.toLowerCase()
                   .equals("m")) {
             this.gender = Genders.MALE;
@@ -59,7 +63,9 @@ public class Person extends Contact {
             this.gender = Genders.FEMALE;
         } else {
             this.gender = Genders.INVALID;
+            success = false;
         }
+        return success;
     }
 
     enum Genders {
@@ -100,6 +106,7 @@ public class Person extends Contact {
 
     @Override
     public boolean setField(String fieldName, String fieldValue) {
+        boolean success = true;
         switch (fieldName.toLowerCase()) {
             case "name":
                 setName(fieldValue);
@@ -108,16 +115,16 @@ public class Person extends Contact {
                 setSurname(fieldValue);
                 break;
             case "birth":
-                setBirthDate(fieldValue);
+                success = setBirthDate(fieldValue);
                 break;
             case "gender":
-                setGender(fieldValue);
+                success = setGender(fieldValue);
                 break;
             case "number":
-                setPhoneNumber(fieldValue);
+                success = setPhoneNumber(fieldValue);
                 break;
         }
-        return false;
+        return success;
     }
 
     @Override
