@@ -1,6 +1,5 @@
 package contacts;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -142,46 +141,6 @@ public class Main {
             System.out.println("Wrong field name!");
         }
         System.out.println(selectedContact.getInfo());
-    }
-
-    private static void deleteAction(Scanner input, ListOfContacts list) {
-        if (list.size() == 0) {
-            System.out.print("No records to remove!");
-        } else {
-            list.listRecords();
-            int index;
-            try {
-                System.out.print("Select a record: ");
-                index = Integer.parseInt(input.nextLine());
-            } catch (InputMismatchException e) {
-                System.out.print("You have to input correct index");
-                index = 0;
-            }
-            if (index > 0 && index <= list.size()) {
-                list.removeRecord(index - 1);
-                System.out.print("The record removed!");
-            } else {
-                System.out.print("There is no such record");
-            }
-        }
-    }
-
-    private static void infoAction(Scanner input, ListOfContacts list) {
-        int index;
-        System.out.print("Enter index to show info: ");
-        try {
-            index = Integer.parseInt(input.nextLine());
-        } catch (InputMismatchException e) {
-            System.out.print("You have to input correct index");
-            index = 0;
-        }
-        if (index > 0 && index <= list.size()) {
-            System.out.println(list.getRecord(index - 1)
-                                   .getInfo());
-        } else {
-            System.out.print("There is no such record");
-        }
-
     }
 
     private static String getActions(AppStates state) {
