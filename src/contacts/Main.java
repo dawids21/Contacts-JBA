@@ -29,6 +29,9 @@ public class Main {
                             System.out.println();
                             break;
                         case "list":
+                            listOfContacts.listRecords();
+                            setState(AppStates.LIST);
+                            System.out.println();
                             break;
                         case "search":
                             break;
