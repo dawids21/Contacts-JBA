@@ -8,13 +8,13 @@ public class Main {
     private static AppStates state;
     private static final PersonFactory personFactory = new PersonFactory();
     private static final OrganizationFactory organizationFactory = new OrganizationFactory();
+    private static final PersonEditor personEditor = new PersonEditor();
+    private static final OrganizationEditor organizationEditor = new OrganizationEditor();
 
     public static void main(String[] args) {
         setState(AppStates.MENU);
         final var input = new Scanner(System.in);
         final var listOfContacts = new ListOfContacts();
-        final var personEditor = new PersonEditor();
-        final var organizationEditor = new OrganizationEditor();
 
         while (true) {
             System.out.print("[" + getState().name()
@@ -40,30 +40,6 @@ public class Main {
                             System.out.println("Incorrect action");
                             break;
                     }
-                    break;
-                case EDIT:
-                    if (listOfContacts.size() == 0) {
-                        System.out.print("No records to edit!");
-                    } else {
-                        listOfContacts.listRecords();
-                        int indexOfRecord;
-                        System.out.print("Select a record: ");
-                        try {
-                            indexOfRecord = Integer.parseInt(input.nextLine());
-                        } catch (NumberFormatException e) {
-                            indexOfRecord = 0;
-                        }
-                        if (indexOfRecord != 0) {
-                            var contact = listOfContacts.getRecord(indexOfRecord - 1);
-                            if (contact instanceof Person) {
-                                personEditor.edit(input, listOfContacts, indexOfRecord - 1);
-                            } else if (contact instanceof Organization) {
-                                organizationEditor.edit(input, listOfContacts, indexOfRecord - 1);
-                            }
-                        }
-                    }
-                    System.out.println();
-                    setState(AppStates.MENU);
                     break;
                 case REMOVE:
                     if (listOfContacts.size() == 0) {
@@ -133,6 +109,29 @@ public class Main {
         }
         if (record != null) {
             list.addRecord(record);
+        }
+    }
+
+    private static void editAction(Scanner input, ListOfContacts list) {
+        if (list.size() == 0) {
+            System.out.print("No records to edit!");
+        } else {
+            list.listRecords();
+            int indexOfRecord;
+            System.out.print("Select a record: ");
+            try {
+                indexOfRecord = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                indexOfRecord = 0;
+            }
+            if (indexOfRecord != 0) {
+                var contact = list.getRecord(indexOfRecord - 1);
+                if (contact instanceof Person) {
+                    personEditor.edit(input, list, indexOfRecord - 1);
+                } else if (contact instanceof Organization) {
+                    organizationEditor.edit(input, list, indexOfRecord - 1);
+                }
+            }
         }
     }
 
