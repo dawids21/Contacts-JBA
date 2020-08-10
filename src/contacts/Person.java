@@ -88,17 +88,17 @@ public class Person extends Contact {
     }
 
     @Override
-    public String[] getFieldsNames() {
+    public String[] getFieldsNames() { //TODO implement getFieldsNames
         return new String[0];
     }
 
     @Override
-    public void setField(String fieldName, String fieldValue) {
+    public void setField(String fieldName, String fieldValue) { //TODO implement setField
 
     }
 
     @Override
-    public String getField(String fieldName) {
+    public String getField(String fieldName) { //TODO implement getField
         return null;
     }
 
