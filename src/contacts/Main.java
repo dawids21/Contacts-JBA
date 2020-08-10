@@ -197,7 +197,7 @@ public class Main {
                 str = "[number], back, again";
                 break;
             case RECORD:
-                str = "[number], delete, menu";
+                str = "edit, delete, menu";
                 break;
             case LIST:
                 str = "[number], back";
