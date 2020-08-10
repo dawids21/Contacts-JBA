@@ -50,4 +50,10 @@ public abstract class Contact {
     }
 
     public abstract void getInfo();
+
+    public abstract String[] getFieldsNames();
+
+    public abstract void setField(String fieldName, String fieldValue);
+
+    public abstract String getField(String fieldName);
 }
