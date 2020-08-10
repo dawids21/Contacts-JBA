@@ -47,6 +47,12 @@ public class Main {
                             break;
                     }
                     break;
+                case SEARCH:
+                    break;
+                case RECORD:
+                    break;
+                case LIST:
+                    break;
             }
         }
     }
