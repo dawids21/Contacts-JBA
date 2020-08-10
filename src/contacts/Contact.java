@@ -49,7 +49,7 @@ public abstract class Contact {
         return !phoneNumber.equals("");
     }
 
-    public abstract void getInfo();
+    public abstract String getInfo();
 
     public abstract String[] getFieldsNames();
 
