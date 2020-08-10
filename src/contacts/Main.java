@@ -40,6 +40,7 @@ public class Main {
                             System.out.println();
                             break;
                         case "exit":
+                            System.exit(0);
                             break;
                         default:
                             System.out.println("Incorrect action");
