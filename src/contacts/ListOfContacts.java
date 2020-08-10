@@ -22,6 +22,10 @@ public class ListOfContacts {
         records.remove(index);
     }
 
+    public void removeRecord(Contact contact) {
+        records.remove(contact);
+    }
+
     public void listRecords() {
         int index = 1;
         for (var record : records) {
