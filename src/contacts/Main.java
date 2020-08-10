@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class Main {
 
     private static AppStates state;
+    private static final PersonFactory personFactory = new PersonFactory();
+    private static final OrganizationFactory organizationFactory = new OrganizationFactory();
 
     public static void main(String[] args) {
         setState(AppStates.MENU);
         final var input = new Scanner(System.in);
         final var listOfContacts = new ListOfContacts();
-        final var personFactory = new PersonFactory();
-        final var organizationFactory = new OrganizationFactory();
         final var personEditor = new PersonEditor();
         final var organizationEditor = new OrganizationEditor();
 
