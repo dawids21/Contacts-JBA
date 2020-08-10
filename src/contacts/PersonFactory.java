@@ -18,37 +18,45 @@ public class PersonFactory extends ContactFactory {
         var surname = input.nextLine();
 
         System.out.print("Enter the birth date: ");
-        var birthDateString = input.nextLine();
-        LocalDate birthDate;
-        try {
-            birthDate = LocalDate.parse(birthDateString);
-        } catch (DateTimeParseException e) {
+        var birthDate = input.nextLine();
+        if (!checkBirthDate(birthDate)) {
             System.out.println("Bad birth date!");
-            birthDate = null;
         }
 
         System.out.print("Enter the gender: ");
-        var genderString = input.nextLine();
-        Person.Genders gender;
-        switch (genderString) {
-            case "M":
-                gender = Person.Genders.MALE;
-                break;
-            case "F":
-                gender = Person.Genders.FEMALE;
-                break;
-            default:
-                System.out.println("Bad gender!");
-                gender = Person.Genders.INVALID;
-                break;
+        var gender = input.nextLine();
+        if (!checkGender(gender)) {
+            System.out.println("Bad gender!");
         }
 
         System.out.print("Enter the phone number: ");
         var phoneNumber = input.nextLine();
         if (!checkNumber(phoneNumber)) {
-            phoneNumber = "";
             System.out.println("Wrong number format!");
         }
+
         return new Person(name, surname, birthDate, gender, phoneNumber);
+    }
+
+    private boolean checkGender(String gender) {
+        boolean valid = true;
+        if (gender.length() > 1) {
+            valid = false;
+        } else if (gender.toLowerCase()
+                         .charAt(0) != 'm' && gender.toLowerCase()
+                                                    .charAt(0) != 'f') {
+            valid = false;
+        }
+        return valid;
+    }
+
+    private boolean checkBirthDate(String birthDate) {
+        boolean valid = true;
+        try {
+            LocalDate.parse(birthDate);
+        } catch (DateTimeParseException e) {
+            valid = false;
+        }
+        return valid;
     }
 }
