@@ -10,8 +10,6 @@ public class Main {
     private static final PersonFactory personFactory = new PersonFactory();
     private static final OrganizationFactory organizationFactory =
              new OrganizationFactory();
-    private static final PersonEditor personEditor = new PersonEditor();
-    private static final OrganizationEditor organizationEditor = new OrganizationEditor();
 
     private static AppStates state;
     private static Contact selectedContact = null;
