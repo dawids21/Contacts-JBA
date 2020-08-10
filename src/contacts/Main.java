@@ -8,7 +8,8 @@ public class Main {
     private static final String TYPES_OF_CONTACTS = "person, organization";
 
     private static final PersonFactory personFactory = new PersonFactory();
-    private static final OrganizationFactory organizationFactory = new OrganizationFactory();
+    private static final OrganizationFactory organizationFactory =
+             new OrganizationFactory();
     private static final PersonEditor personEditor = new PersonEditor();
     private static final OrganizationEditor organizationEditor = new OrganizationEditor();
 
@@ -39,7 +40,9 @@ public class Main {
                         case "search":
                             break;
                         case "count":
-                            System.out.print("The Phone Book has " + listOfContacts.size() + " records.");
+                            System.out.print(
+                                     "The Phone Book has " + listOfContacts.size() +
+                                     " records.");
                             System.out.println();
                             break;
                         case "exit":
