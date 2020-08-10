@@ -40,7 +40,7 @@ public class PersonFactory extends ContactFactory {
 
     private boolean checkGender(String gender) {
         boolean valid = true;
-        if (gender.length() > 1) {
+        if (gender.length() != 1) {
             valid = false;
         } else if (gender.toLowerCase()
                          .charAt(0) != 'm' && gender.toLowerCase()
