@@ -190,12 +190,15 @@ public class Main {
         return str;
     }
 
-    private static void selectContact(ListOfContacts list, int index) {
+    private static boolean selectContact(ListOfContacts list, int index) {
+        boolean success = true;
         if (index > 0 && index <= list.size()) {
             selectedContact = list.getRecord(index);
         } else {
             selectedContact = null;
+            success = false;
         }
+        return success;
     }
 
     private static void deselectContact() {
