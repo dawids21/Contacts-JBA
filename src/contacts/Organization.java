@@ -35,8 +35,12 @@ public class Organization extends Contact {
     }
 
     @Override
-    public String[] getFieldsNames() { //TODO implement getFieldsNames
-        return new String[0];
+    public String[] getFieldsNames() {
+        var names = new String[3];
+        names[0] = "Name";
+        names[1] = "Address";
+        names[2] = "Number";
+        return names;
     }
 
     @Override
