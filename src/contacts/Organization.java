@@ -44,8 +44,18 @@ public class Organization extends Contact {
     }
 
     @Override
-    public void setField(String fieldName, String fieldValue) { //TODO implement setField
-
+    public void setField(String fieldName, String fieldValue) {
+        switch (fieldName.toLowerCase()) {
+            case "name":
+                setName(fieldValue);
+                break;
+            case "address":
+                setAddress(fieldValue);
+                break;
+            case "number":
+                setPhoneNumber(fieldValue);
+                break;
+        }
     }
 
     @Override
