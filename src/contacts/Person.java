@@ -88,8 +88,14 @@ public class Person extends Contact {
     }
 
     @Override
-    public String[] getFieldsNames() { //TODO implement getFieldsNames
-        return new String[0];
+    public String[] getFieldsNames() {
+        var names = new String[5];
+        names[0] = "Name";
+        names[1] = "Surname";
+        names[2] = "Birth";
+        names[3] = "Gender";
+        names[4] = "Number";
+        return names;
     }
 
     @Override
