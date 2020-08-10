@@ -99,8 +99,24 @@ public class Person extends Contact {
     }
 
     @Override
-    public void setField(String fieldName, String fieldValue) { //TODO implement setField
-
+    public void setField(String fieldName, String fieldValue) {
+        switch (fieldName.toLowerCase()) {
+            case "name":
+                setName(fieldValue);
+                break;
+            case "surname":
+                setSurname(fieldValue);
+                break;
+            case "birth":
+                setBirthDate(fieldValue);
+                break;
+            case "gender":
+                setGender(fieldValue);
+                break;
+            case "number":
+                setPhoneNumber(fieldValue);
+                break;
+        }
     }
 
     @Override
