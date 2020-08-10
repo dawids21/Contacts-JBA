@@ -46,10 +46,6 @@ public class Main {
                             break;
                     }
                     break;
-                case INFO:
-                    System.out.println();
-                    setState(AppStates.MENU);
-                    break;
             }
         }
     }
