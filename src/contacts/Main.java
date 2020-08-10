@@ -151,30 +151,6 @@ public class Main {
         return str;
     }
 
-
-    private static void setAppStateFromMenuAction(String action) {
-        switch (action) {
-            case "add":
-                setState(AppStates.ADD);
-                break;
-            case "remove":
-                setState(AppStates.REMOVE);
-                break;
-            case "edit":
-                setState(AppStates.EDIT);
-                break;
-            case "count":
-                setState(AppStates.COUNT);
-                break;
-            case "info":
-                setState(AppStates.INFO);
-                break;
-            default:
-                System.out.println("Incorrect action");
-                break;
-        }
-    }
-
     public static void setState(AppStates newState) {
         state = newState;
     }
