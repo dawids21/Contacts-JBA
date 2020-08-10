@@ -33,6 +33,8 @@ public class Main {
                         case "search":
                             break;
                         case "count":
+                            System.out.print("The Phone Book has " + listOfContacts.size() + " records.");
+                            System.out.println();
                             break;
                         case "exit":
                             break;
@@ -40,15 +42,6 @@ public class Main {
                             System.out.println("Incorrect action");
                             break;
                     }
-                    break;
-                case REMOVE:
-                    System.out.println();
-                    setState(AppStates.MENU);
-                    break;
-                case COUNT:
-                    System.out.print("The Phone Book has " + listOfContacts.size() + " records.");
-                    System.out.println();
-                    setState(AppStates.MENU);
                     break;
                 case INFO:
                     listOfContacts.listRecords();
