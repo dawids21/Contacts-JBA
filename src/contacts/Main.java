@@ -60,15 +60,20 @@ public class Main {
                 case RECORD:
                     switch (action) {
                         case "edit":
+                            editAction(input, getSelectedContact());
+                            setState(AppStates.MENU);
                             break;
                         case "delete":
+                            setState(AppStates.MENU);
                             break;
                         case "menu":
+                            setState(AppStates.MENU);
                             break;
                         default:
-                            System.out.println("Incorrect action");
+                            System.out.print("Incorrect action");
                             break;
                     }
+                    System.out.println();
                     break;
                 case LIST:
                     break;
