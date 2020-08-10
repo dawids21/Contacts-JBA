@@ -17,6 +17,7 @@ public class Main {
         final var organizationEditor = new OrganizationEditor();
 
         while (true) {
+            System.out.print("[" + getState() + "] ");
             switch (getState()) {
                 case MENU:
                     System.out.print("Enter action (add, remove, edit, count, info, exit): ");
@@ -156,6 +157,27 @@ public class Main {
     }
 
     enum AppStates {
-        MENU, ADD, EDIT, REMOVE, COUNT, INFO
+        MENU, ADD, EDIT, REMOVE, COUNT, INFO;
+
+        @Override
+        public String toString() {
+            var str = "";
+
+            if (this == MENU) {
+                str = "menu";
+            } else if (this == ADD) {
+                str = "add";
+            } else if (this == EDIT) {
+                str = "edit";
+            } else if (this == REMOVE) {
+                str = "remove";
+            } else if (this == COUNT) {
+                str = "count";
+            } else {
+                str = "info";
+            }
+
+            return str;
+        }
     }
 }
