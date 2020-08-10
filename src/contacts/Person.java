@@ -99,7 +99,7 @@ public class Person extends Contact {
     }
 
     @Override
-    public void setField(String fieldName, String fieldValue) {
+    public boolean setField(String fieldName, String fieldValue) {
         switch (fieldName.toLowerCase()) {
             case "name":
                 setName(fieldValue);
@@ -117,6 +117,7 @@ public class Person extends Contact {
                 setPhoneNumber(fieldValue);
                 break;
         }
+        return false;
     }
 
     @Override

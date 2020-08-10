@@ -33,16 +33,20 @@ public abstract class Contact {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public boolean setPhoneNumber(String phoneNumber) {
+        boolean success = true;
         if (checkNumber(phoneNumber)) {
             this.phoneNumber = phoneNumber;
         } else {
             this.phoneNumber = "";
+            success = false;
         }
+        return success;
     }
 
     private boolean checkNumber(String phoneNumber) {
-        return phoneNumber.matches("\\+?(\\w+[ -]\\(\\w{2,}\\)([ -]\\w{2,})*|(\\w+|\\(\\w+\\))([ -]\\w{2,})*)");
+        return phoneNumber.matches(
+                 "\\+?(\\w+[ -]\\(\\w{2,}\\)([ -]\\w{2,})*|(\\w+|\\(\\w+\\))([ -]\\w{2,})*)");
     }
 
     public boolean hasNumber() {
@@ -53,7 +57,7 @@ public abstract class Contact {
 
     public abstract String[] getFieldsNames();
 
-    public abstract void setField(String fieldName, String fieldValue);
+    public abstract boolean setField(String fieldName, String fieldValue);
 
     public abstract String getField(String fieldName);
 }

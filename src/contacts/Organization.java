@@ -44,7 +44,8 @@ public class Organization extends Contact {
     }
 
     @Override
-    public void setField(String fieldName, String fieldValue) {
+    public boolean setField(String fieldName, String fieldValue) {
+        boolean valid = true;
         switch (fieldName.toLowerCase()) {
             case "name":
                 setName(fieldValue);
@@ -53,9 +54,14 @@ public class Organization extends Contact {
                 setAddress(fieldValue);
                 break;
             case "number":
-                setPhoneNumber(fieldValue);
+                if (!setPhoneNumber(fieldValue)) {
+                    valid = false;
+                }
                 break;
+            default:
+                valid = false;
         }
+        return valid;
     }
 
     @Override
