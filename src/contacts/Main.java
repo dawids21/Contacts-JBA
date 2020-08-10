@@ -42,25 +42,6 @@ public class Main {
                     }
                     break;
                 case REMOVE:
-                    if (listOfContacts.size() == 0) {
-                        System.out.print("No records to remove!");
-                    } else {
-                        listOfContacts.listRecords();
-                        int index;
-                        try {
-                            System.out.print("Select a record: ");
-                            index = Integer.parseInt(input.nextLine());
-                        } catch (InputMismatchException e) {
-                            System.out.print("You have to input correct index");
-                            index = 0;
-                        }
-                        if (index > 0 && index <= listOfContacts.size()) {
-                            listOfContacts.removeRecord(index - 1);
-                            System.out.print("The record removed!");
-                        } else {
-                            System.out.print("There is no such record");
-                        }
-                    }
                     System.out.println();
                     setState(AppStates.MENU);
                     break;
@@ -131,6 +112,28 @@ public class Main {
                 } else if (contact instanceof Organization) {
                     organizationEditor.edit(input, list, indexOfRecord - 1);
                 }
+            }
+        }
+    }
+
+    private static void deleteAction(Scanner input, ListOfContacts list) {
+        if (list.size() == 0) {
+            System.out.print("No records to remove!");
+        } else {
+            list.listRecords();
+            int index;
+            try {
+                System.out.print("Select a record: ");
+                index = Integer.parseInt(input.nextLine());
+            } catch (InputMismatchException e) {
+                System.out.print("You have to input correct index");
+                index = 0;
+            }
+            if (index > 0 && index <= list.size()) {
+                list.removeRecord(index - 1);
+                System.out.print("The record removed!");
+            } else {
+                System.out.print("There is no such record");
             }
         }
     }
