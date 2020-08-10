@@ -5,11 +5,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static AppStates state;
+    private static final String TYPES_OF_CONTACTS = "person, organization";
+
     private static final PersonFactory personFactory = new PersonFactory();
     private static final OrganizationFactory organizationFactory = new OrganizationFactory();
     private static final PersonEditor personEditor = new PersonEditor();
     private static final OrganizationEditor organizationEditor = new OrganizationEditor();
+
+    private static AppStates state;
 
     public static void main(String[] args) {
         setState(AppStates.MENU);
@@ -58,7 +61,7 @@ public class Main {
     }
 
     private static void addAction(Scanner input, ListOfContacts list) {
-        System.out.print("Enter the type (person, organization): ");
+        System.out.print("Enter the type (" + TYPES_OF_CONTACTS + "): ");
         var type = input.nextLine();
         Contact record;
         switch (type.toLowerCase()) {
@@ -133,14 +136,14 @@ public class Main {
         }
         if (index > 0 && index <= list.size()) {
             System.out.println(list.getRecord(index - 1)
-                                             .getInfo());
+                                   .getInfo());
         } else {
             System.out.print("There is no such record");
         }
 
     }
 
-    private static String getActions(AppStates state) { //TODO add new states
+    private static String getActions(AppStates state) {
         String str = "";
 
         switch (state) {
