@@ -23,32 +23,23 @@ public class Main {
                 case MENU:
                     System.out.print("Enter action (" + getActions(getState()) + "): ");
                     var action = input.nextLine();
-                    if (action.equals("exit")) {
-                        System.exit(0);
-                    } else {
-                        setAppStateFromMenuAction(action);
-                    }
-                    break;
-                case ADD:
-                    System.out.print("Enter the type (person, organization): ");
-                    var type = input.nextLine();
-                    Contact record;
-                    switch (type.toLowerCase()) {
-                        case "person":
-                            record = personFactory.createContact(input);
+                    switch (action) {
+                        case "add":
+                            addAction(input, listOfContacts);
+                            System.out.println();
                             break;
-                        case "organization":
-                            record = organizationFactory.createContact(input);
+                        case "list":
+                            break;
+                        case "search":
+                            break;
+                        case "count":
+                            break;
+                        case "exit":
                             break;
                         default:
-                            record = null;
+                            System.out.println("Incorrect action");
                             break;
                     }
-                    if (record != null) {
-                        listOfContacts.addRecord(record);
-                    }
-                    System.out.println();
-                    setState(AppStates.MENU);
                     break;
                 case EDIT:
                     if (listOfContacts.size() == 0) {
@@ -122,6 +113,26 @@ public class Main {
                     setState(AppStates.MENU);
                     break;
             }
+        }
+    }
+
+    private static void addAction(Scanner input, ListOfContacts list) {
+        System.out.print("Enter the type (person, organization): ");
+        var type = input.nextLine();
+        Contact record;
+        switch (type.toLowerCase()) {
+            case "person":
+                record = personFactory.createContact(input);
+                break;
+            case "organization":
+                record = organizationFactory.createContact(input);
+                break;
+            default:
+                record = null;
+                break;
+        }
+        if (record != null) {
+            list.addRecord(record);
         }
     }
 
