@@ -140,17 +140,12 @@ public class Main {
             case MENU:
                 str = "add, list, search, count, exit";
                 break;
-            case ADD:
+            case SEARCH:
                 break;
-            case EDIT:
+            case RECORD:
                 break;
-            case REMOVE:
+            case LIST:
                 break;
-            case COUNT:
-                break;
-            case INFO:
-                break;
-
         }
 
         return str;
