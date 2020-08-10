@@ -20,7 +20,7 @@ public class Main {
             System.out.print("[" + getState() + "] ");
             switch (getState()) {
                 case MENU:
-                    System.out.print("Enter action (add, remove, edit, count, info, exit): ");
+                    System.out.print("Enter action (" + getActions(getState()) + "): ");
                     var action = input.nextLine();
                     if (action.equals("exit")) {
                         System.exit(0);
@@ -122,6 +122,29 @@ public class Main {
                     break;
             }
         }
+    }
+
+    private static String getActions(AppStates state) { //TODO add new states
+        String str = "";
+
+        switch (state) {
+            case MENU:
+                str = "add, list, search, count, exit";
+                break;
+            case ADD:
+                break;
+            case EDIT:
+                break;
+            case REMOVE:
+                break;
+            case COUNT:
+                break;
+            case INFO:
+                break;
+
+        }
+
+        return str;
     }
 
 
