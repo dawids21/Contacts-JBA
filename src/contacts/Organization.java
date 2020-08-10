@@ -29,9 +29,10 @@ public class Organization extends Contact {
 
     @Override
     public String getInfo() {
-        return "Organization name: " + getName() + "\nAddress: " + getAddress() + "\nNumber: " +
-               (hasNumber() ? getPhoneNumber() : "[no data]") + "\nTime created: " + getTimeCreated() +
-               "\nTime last edit: " + getTimeEdited();
+        return "Organization name: " + getName() + "\nAddress: " + getAddress() +
+               "\nNumber: " + (hasNumber() ? getPhoneNumber() : "[no data]") +
+               "\nTime created: " + getTimeCreated() + "\nTime last edit: " +
+               getTimeEdited();
     }
 
     @Override

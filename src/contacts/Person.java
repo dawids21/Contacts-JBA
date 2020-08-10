@@ -10,7 +10,8 @@ public class Person extends Contact {
     private LocalDate birthDate;
     private Genders gender;
 
-    public Person(String name, String surname, String birthDate, String gender, String phoneNumber) {
+    public Person(String name, String surname, String birthDate, String gender,
+                  String phoneNumber) {
         super(phoneNumber);
         setName(name);
         setSurname(surname);
@@ -88,9 +89,10 @@ public class Person extends Contact {
     @Override
     public String getInfo() {
         return "Name: " + getName() + "\nSurname: " + getSurname() + "\nBirth date: " +
-               (getBirthDate() != null ? getBirthDate() : "[no data]") + "\nGender: " + getGender() + "\nNumber: " +
-               (hasNumber() ? getPhoneNumber() : "[no data]") + "\nTime created: " + getTimeCreated() +
-               "\nTime last edit: " + getTimeEdited();
+               (getBirthDate() != null ? getBirthDate() : "[no data]") + "\nGender: " +
+               getGender() + "\nNumber: " +
+               (hasNumber() ? getPhoneNumber() : "[no data]") + "\nTime created: " +
+               getTimeCreated() + "\nTime last edit: " + getTimeEdited();
     }
 
     @Override
