@@ -59,8 +59,22 @@ public class Organization extends Contact {
     }
 
     @Override
-    public String getField(String fieldName) { //implement getField
-        return null;
+    public String getField(String fieldName) {
+        String fieldValue = "";
+
+        switch (fieldName.toLowerCase()) {
+            case "name":
+                fieldValue = getName();
+                break;
+            case "address":
+                fieldValue = getAddress();
+                break;
+            case "number":
+                fieldValue = getPhoneNumber();
+                break;
+        }
+
+        return fieldValue;
     }
 
     @Override
