@@ -154,10 +154,13 @@ public class Main {
                 str = "add, list, search, count, exit";
                 break;
             case SEARCH:
+                str = "[number], back, again";
                 break;
             case RECORD:
+                str = "[number], delete, menu";
                 break;
             case LIST:
+                str = "[number], back";
                 break;
         }
 
