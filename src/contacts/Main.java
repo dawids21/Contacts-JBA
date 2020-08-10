@@ -24,7 +24,8 @@ public class Main {
             System.out.print("[" + getState().name()
                                              .toLowerCase() + "] Enter action (" +
                              getActions(getState()) + "): ");
-            var action = input.nextLine();
+            var action = input.nextLine()
+                              .toLowerCase();
             switch (getState()) {
                 case MENU:
                     switch (action) {
@@ -56,6 +57,17 @@ public class Main {
                 case SEARCH:
                     break;
                 case RECORD:
+                    switch (action) {
+                        case "edit":
+                            break;
+                        case "delete":
+                            break;
+                        case "menu":
+                            break;
+                        default:
+                            System.out.println("Incorrect action");
+                            break;
+                    }
                     break;
                 case LIST:
                     break;
