@@ -111,8 +111,8 @@ public class Main {
                         index = 0;
                     }
                     if (index > 0 && index <= listOfContacts.size()) {
-                        listOfContacts.getRecord(index - 1)
-                                      .getInfo();
+                        System.out.println(listOfContacts.getRecord(index - 1)
+                                                         .getInfo());
                     } else {
                         System.out.print("There is no such record");
                     }
