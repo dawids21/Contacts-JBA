@@ -80,6 +80,23 @@ public class Main {
                     System.out.println();
                     break;
                 case LIST:
+                    if ("back".equals(action)) {
+                        setState(AppStates.MENU);
+                    } else {
+                        int index;
+                        try {
+                            index = Integer.parseInt(action);
+                        } catch (NumberFormatException e) {
+                            System.out.println("You have to input number");
+                            index = 0;
+                        }
+
+                        if (index != 0 && selectContact(listOfContacts, index - 1)) {
+                            System.out.println(getSelectedContact().getInfo());
+                            setState(AppStates.RECORD);
+                        }
+                    }
+                    System.out.println();
                     break;
             }
         }
