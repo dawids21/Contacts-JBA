@@ -14,6 +14,7 @@ public class Main {
     private static final OrganizationEditor organizationEditor = new OrganizationEditor();
 
     private static AppStates state;
+    private static Contact selectedContact = null;
 
     public static void main(String[] args) {
         setState(AppStates.MENU);
@@ -177,6 +178,18 @@ public class Main {
         }
 
         return str;
+    }
+
+    private static void selectContact(ListOfContacts list, int index) {
+        if (index > 0 && index <= list.size()) {
+            selectedContact = list.getRecord(index);
+        } else {
+            selectedContact = null;
+        }
+    }
+
+    private static Contact getSelectedContact() {
+        return selectedContact;
     }
 
     public static void setState(AppStates newState) {
