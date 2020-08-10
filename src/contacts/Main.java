@@ -128,22 +128,22 @@ public class Main {
 
         for (int i = 0; i < fieldsNames.length; i++) {
             if (i != fieldsNames.length - 1) {
-                System.out.print(fieldsNames[i] + ", ");
+                System.out.print(fieldsNames[i].toLowerCase() + ", ");
             } else {
-                System.out.print(fieldsNames[i]);
+                System.out.print(fieldsNames[i].toLowerCase());
             }
         }
         System.out.print("): ");
         var field = input.nextLine()
                          .toLowerCase();
-        System.out.print("Enter " + field);
+        System.out.print("Enter " + field + ": ");
         var fieldValue = input.nextLine();
         if (selectedContact.setField(field, fieldValue)) {
-            System.out.print("Saved");
+            System.out.println("Saved");
         } else {
-            System.out.print("Wrong field name!");
+            System.out.println("Wrong field name!");
         }
-        System.out.print(selectedContact.getInfo());
+        System.out.println(selectedContact.getInfo());
     }
 
     private static void deleteAction(Scanner input, ListOfContacts list) {
