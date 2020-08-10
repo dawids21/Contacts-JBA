@@ -35,6 +35,21 @@ public class Organization extends Contact {
     }
 
     @Override
+    public String[] getFieldsNames() {
+        return new String[0];
+    }
+
+    @Override
+    public void setField(String fieldName, String fieldValue) {
+
+    }
+
+    @Override
+    public String getField(String fieldName) {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return name;
     }
