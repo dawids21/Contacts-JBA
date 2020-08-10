@@ -65,6 +65,7 @@ public class Main {
                             setState(AppStates.MENU);
                             break;
                         case "delete":
+                            listOfContacts.removeRecord(getSelectedContact());
                             deselectContact();
                             setState(AppStates.MENU);
                             break;
