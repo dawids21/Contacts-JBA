@@ -61,12 +61,15 @@ public class Main {
                     switch (action) {
                         case "edit":
                             editAction(input, getSelectedContact());
+                            deselectContact();
                             setState(AppStates.MENU);
                             break;
                         case "delete":
+                            deselectContact();
                             setState(AppStates.MENU);
                             break;
                         case "menu":
+                            deselectContact();
                             setState(AppStates.MENU);
                             break;
                         default:
@@ -192,6 +195,10 @@ public class Main {
         } else {
             selectedContact = null;
         }
+    }
+
+    private static void deselectContact() {
+        selectedContact = null;
     }
 
     private static Contact getSelectedContact() {
