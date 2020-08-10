@@ -10,12 +10,12 @@ public class Person extends Contact {
     private LocalDate birthDate;
     private Genders gender;
 
-    public Person(String name, String surname, LocalDate birthDate, Genders gender, String phoneNumber) {
+    public Person(String name, String surname, String birthDate, String gender, String phoneNumber) {
         super(phoneNumber);
-        this.name = name;
-        this.surname = surname;
-        this.birthDate = birthDate;
-        this.gender = gender;
+        setName(name);
+        setSurname(surname);
+        setBirthDate(birthDate);
+        setGender(gender);
     }
 
     public String getName() {
@@ -38,10 +38,6 @@ public class Person extends Contact {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public void setBirthDate(String birthDate) {
         try {
             this.birthDate = LocalDate.parse(birthDate);
@@ -52,10 +48,6 @@ public class Person extends Contact {
 
     public Genders getGender() {
         return gender;
-    }
-
-    public void setGender(Genders gender) {
-        this.gender = gender;
     }
 
     public void setGender(String gender) {
