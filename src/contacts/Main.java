@@ -21,11 +21,11 @@ public class Main {
 
         while (true) {
             System.out.print("[" + getState().name()
-                                             .toLowerCase() + "] ");
+                                             .toLowerCase() + "] Enter action (" +
+                             getActions(getState()) + "): ");
+            var action = input.nextLine();
             switch (getState()) {
                 case MENU:
-                    System.out.print("Enter action (" + getActions(getState()) + "): ");
-                    var action = input.nextLine();
                     switch (action) {
                         case "add":
                             addAction(input, listOfContacts);
