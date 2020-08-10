@@ -101,27 +101,28 @@ public class Main {
         }
     }
 
-    private static void editAction(Scanner input, ListOfContacts list) {
-        if (list.size() == 0) {
-            System.out.print("No records to edit!");
-        } else {
-            list.listRecords();
-            int indexOfRecord;
-            System.out.print("Select a record: ");
-            try {
-                indexOfRecord = Integer.parseInt(input.nextLine());
-            } catch (NumberFormatException e) {
-                indexOfRecord = 0;
-            }
-            if (indexOfRecord != 0) {
-                var contact = list.getRecord(indexOfRecord - 1);
-                if (contact instanceof Person) {
-                    personEditor.edit(input, list, indexOfRecord - 1);
-                } else if (contact instanceof Organization) {
-                    organizationEditor.edit(input, list, indexOfRecord - 1);
-                }
+    private static void editAction(Scanner input, Contact selectedContact) {
+        System.out.print("Select a field (");
+        var fieldsNames = selectedContact.getFieldsNames();
+
+        for (int i = 0; i < fieldsNames.length; i++) {
+            if (i != fieldsNames.length - 1) {
+                System.out.print(fieldsNames[i] + ", ");
+            } else {
+                System.out.print(fieldsNames[i]);
             }
         }
+        System.out.print("): ");
+        var field = input.nextLine()
+                         .toLowerCase();
+        System.out.print("Enter " + field);
+        var fieldValue = input.nextLine();
+        if (selectedContact.setField(field, fieldValue)) {
+            System.out.print("Saved");
+        } else {
+            System.out.print("Wrong field name!");
+        }
+        System.out.print(selectedContact.getInfo());
     }
 
     private static void deleteAction(Scanner input, ListOfContacts list) {
