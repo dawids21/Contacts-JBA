@@ -47,21 +47,6 @@ public class Main {
                     }
                     break;
                 case INFO:
-                    listOfContacts.listRecords();
-                    int index;
-                    System.out.print("Enter index to show info: ");
-                    try {
-                        index = Integer.parseInt(input.nextLine());
-                    } catch (InputMismatchException e) {
-                        System.out.print("You have to input correct index");
-                        index = 0;
-                    }
-                    if (index > 0 && index <= listOfContacts.size()) {
-                        System.out.println(listOfContacts.getRecord(index - 1)
-                                                         .getInfo());
-                    } else {
-                        System.out.print("There is no such record");
-                    }
                     System.out.println();
                     setState(AppStates.MENU);
                     break;
@@ -132,6 +117,24 @@ public class Main {
                 System.out.print("There is no such record");
             }
         }
+    }
+
+    private static void infoAction(Scanner input, ListOfContacts list) {
+        int index;
+        System.out.print("Enter index to show info: ");
+        try {
+            index = Integer.parseInt(input.nextLine());
+        } catch (InputMismatchException e) {
+            System.out.print("You have to input correct index");
+            index = 0;
+        }
+        if (index > 0 && index <= list.size()) {
+            System.out.println(list.getRecord(index - 1)
+                                             .getInfo());
+        } else {
+            System.out.print("There is no such record");
+        }
+
     }
 
     private static String getActions(AppStates state) { //TODO add new states
