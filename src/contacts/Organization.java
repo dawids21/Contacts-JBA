@@ -2,6 +2,7 @@ package contacts;
 
 public class Organization extends Contact {
 
+    private static final long serialVersionUID = -6841528553144988537L;
     private String name;
     private String address;
 
@@ -19,6 +20,10 @@ public class Organization extends Contact {
         this.name = name;
     }
 
+    public boolean hasName() {
+        return getName().equals("");
+    }
+
     public String getAddress() {
         return address;
     }
@@ -27,12 +32,16 @@ public class Organization extends Contact {
         this.address = address;
     }
 
+    public boolean hasAddress() {
+        return getAddress().equals("");
+    }
+
     @Override
     public String getInfo() {
-        return "Organization name: " + getName() + "\nAddress: " + getAddress() +
-               "\nNumber: " + (hasNumber() ? getPhoneNumber() : "[no data]") +
-               "\nTime created: " + getTimeCreated() + "\nTime last edit: " +
-               getTimeEdited();
+        return String.format("Name: %s\nAddress: %s\nNumber: %s\n",
+                             (hasName() ? getName() : Contact.NO_DATA_MSG),
+                             (hasAddress() ? getAddress() : Contact.NO_DATA_MSG),
+                             (hasNumber() ? getPhoneNumber() : Contact.NO_DATA_MSG));
     }
 
     @Override
@@ -71,13 +80,13 @@ public class Organization extends Contact {
 
         switch (fieldName.toLowerCase()) {
             case "name":
-                fieldValue = getName();
+                fieldValue = hasName() ? getName() : Contact.NO_DATA_MSG;
                 break;
             case "address":
-                fieldValue = getAddress();
+                fieldValue = hasAddress() ? getAddress() : Contact.NO_DATA_MSG;
                 break;
             case "number":
-                fieldValue = hasNumber() ? getPhoneNumber() : "[no data]";
+                fieldValue = hasNumber() ? getPhoneNumber() : Contact.NO_DATA_MSG;
                 break;
         }
 
