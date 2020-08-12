@@ -28,7 +28,9 @@ public class ListOfContacts implements Iterable<Contact>, Serializable {
     }
 
     public void remove(int index) {
-        records.remove(index);
+        if (index >= 0 && index <= records.size()) {
+            records.remove(index);
+        }
     }
 
     public void remove(Contact contact) {
