@@ -100,8 +100,6 @@ public class Main {
                     switch (action) {
                         case "edit":
                             editAction(input, getSelectedContact());
-                            deselectContact();
-                            setState(AppStates.MENU);
                             break;
                         case "delete":
                             listOfContacts.remove(getSelectedContact());
