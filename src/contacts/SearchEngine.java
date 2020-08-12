@@ -12,11 +12,15 @@ public class SearchEngine {
 
     public void search(String query) {
         results = new ListOfContacts();
+        var lowerCaseQuery = query.toLowerCase();
         for (var contact : input) {
-            if (contact.toString()
-                       .toLowerCase()
-                       .contains(query.toLowerCase())) {
-                results.add(contact);
+            for (var fieldName : contact.getFieldsNames()) {
+                if (contact.getField(fieldName)
+                           .toLowerCase()
+                           .contains(lowerCaseQuery)) {
+                    results.add(contact);
+                    break;
+                }
             }
         }
     }
