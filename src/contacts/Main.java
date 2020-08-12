@@ -32,7 +32,7 @@ public class Main {
                             System.out.println();
                             break;
                         case "list":
-                            listOfContacts.listRecords();
+                            listOfContacts.print();
                             setState(AppStates.LIST);
                             System.out.println();
                             break;
@@ -62,7 +62,7 @@ public class Main {
                             setState(AppStates.MENU);
                             break;
                         case "delete":
-                            listOfContacts.removeRecord(getSelectedContact());
+                            listOfContacts.remove(getSelectedContact());
                             deselectContact();
                             setState(AppStates.MENU);
                             break;
@@ -115,7 +115,7 @@ public class Main {
                 break;
         }
         if (record != null) {
-            list.addRecord(record);
+            list.add(record);
         }
     }
 
@@ -167,7 +167,7 @@ public class Main {
     private static boolean selectContact(ListOfContacts list, int index) {
         boolean success = true;
         if (index >= 0 && index <= list.size()) {
-            selectedContact = list.getRecord(index);
+            selectedContact = list.get(index);
         } else {
             selectedContact = null;
             success = false;

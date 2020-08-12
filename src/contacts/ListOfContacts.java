@@ -9,24 +9,24 @@ public class ListOfContacts {
     public ListOfContacts() {
     }
 
-    public void addRecord(Contact record) {
+    public void add(Contact record) {
         records.add(record);
         System.out.println("The record added.");
     }
 
-    public Contact getRecord(int index) {
+    public Contact get(int index) {
         return records.get(index);
     }
 
-    public void removeRecord(int index) {
+    public void remove(int index) {
         records.remove(index);
     }
 
-    public void removeRecord(Contact contact) {
+    public void remove(Contact contact) {
         records.remove(contact);
     }
 
-    public void listRecords() {
+    public void print() {
         int index = 1;
         for (var record : records) {
             System.out.println(index + ". " + record.toString());
