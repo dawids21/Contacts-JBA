@@ -2,6 +2,8 @@ package contacts;
 
 public class Organization extends Contact {
 
+    private static final String[] FIELD_NAMES = {"Name", "Address", "Number"};
+
     private static final long serialVersionUID = -6841528553144988537L;
     private String name;
     private String address;
@@ -21,7 +23,7 @@ public class Organization extends Contact {
     }
 
     public boolean hasName() {
-        return getName().equals("");
+        return !getName().equals("");
     }
 
     public String getAddress() {
@@ -33,7 +35,7 @@ public class Organization extends Contact {
     }
 
     public boolean hasAddress() {
-        return getAddress().equals("");
+        return !getAddress().equals("");
     }
 
     @Override
@@ -46,11 +48,7 @@ public class Organization extends Contact {
 
     @Override
     public String[] getFieldsNames() {
-        var names = new String[3];
-        names[0] = "Name";
-        names[1] = "Address";
-        names[2] = "Number";
-        return names;
+        return FIELD_NAMES;
     }
 
     @Override
