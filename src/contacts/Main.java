@@ -29,20 +29,17 @@ public class Main {
                     switch (action) {
                         case "add":
                             addAction(input, listOfContacts);
-                            System.out.println();
                             break;
                         case "list":
                             listOfContacts.print();
                             setState(AppStates.LIST);
-                            System.out.println();
                             break;
                         case "search":
                             break;
                         case "count":
-                            System.out.print(
+                            System.out.println(
                                      "The Phone Book has " + listOfContacts.size() +
                                      " records.");
-                            System.out.println();
                             break;
                         case "exit":
                             System.exit(0);
@@ -74,7 +71,6 @@ public class Main {
                             System.out.print("Incorrect action");
                             break;
                     }
-                    System.out.println();
                     break;
                 case LIST:
                     if ("back".equals(action)) {
@@ -93,9 +89,11 @@ public class Main {
                             setState(AppStates.RECORD);
                         }
                     }
-                    System.out.println();
                     break;
             }
+            System.out.println();
+        }
+    }
         }
     }
 
