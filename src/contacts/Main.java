@@ -52,17 +52,15 @@ public class Main {
                             addAction(input, listOfContacts);
                             break;
                         case "list":
-                            listOfContacts.print();
+                            listAction(listOfContacts);
                             setState(AppStates.LIST);
                             break;
                         case "search":
-                            queryAction(input, searchEngine);
+                            searchAction(input, searchEngine);
                             setState(AppStates.SEARCH);
                             break;
                         case "count":
-                            System.out.println(
-                                     "The Phone Book has " + listOfContacts.size() +
-                                     " records.");
+                            countAction(listOfContacts);
                             break;
                         case "exit":
                             if (dbFile != null) {
@@ -83,7 +81,7 @@ public class Main {
                     if ("back".equals(action)) {
                         setState(AppStates.MENU);
                     } else if ("again".equals(action)) {
-                        queryAction(input, searchEngine);
+                        searchAction(input, searchEngine);
                     } else {
                         int index = getIndex(action);
                         if (index != -1) {
@@ -102,8 +100,7 @@ public class Main {
                             editAction(input, getSelectedContact());
                             break;
                         case "delete":
-                            listOfContacts.remove(getSelectedContact());
-                            deselectContact();
+                            deleteAction(listOfContacts);
                             setState(AppStates.MENU);
                             break;
                         case "menu":
@@ -136,41 +133,6 @@ public class Main {
         }
     }
 
-    private static void saveApp(ListOfContacts data, File file) throws IOException {
-        if (!file.exists()) {
-            if (!file.createNewFile()) {
-                return;
-            }
-        }
-
-        try (var outputStream = new ObjectOutputStream(
-                 new BufferedOutputStream(new FileOutputStream(file)))) {
-            outputStream.writeObject(data);
-        } catch (FileNotFoundException e) {
-            System.out.println("Wrong file name!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void queryAction(Scanner input, SearchEngine searchEngine) {
-        System.out.print("Enter search query: ");
-        var query = input.nextLine();
-        searchEngine.search(query);
-        searchEngine.print();
-    }
-
-    private static int getIndex(String str) {
-        int index;
-        try {
-            index = Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            System.out.println("You have to input number");
-            index = 0;
-        }
-        return index - 1;
-    }
-
     private static void addAction(Scanner input, ListOfContacts list) {
         System.out.print("Enter the type (" + TYPES_OF_CONTACTS + "): ");
         var type = input.nextLine();
@@ -191,6 +153,21 @@ public class Main {
             list.add(record);
             System.out.println("The record added.");
         }
+    }
+
+    private static void listAction(ListOfContacts list) {
+        list.print();
+    }
+
+    private static void searchAction(Scanner input, SearchEngine searchEngine) {
+        System.out.print("Enter search query: ");
+        var query = input.nextLine();
+        searchEngine.search(query);
+        searchEngine.print();
+    }
+
+    private static void countAction(ListOfContacts list) {
+        System.out.println("The Phone Book has " + list.size() + " records.");
     }
 
     private static void editAction(Scanner input, Contact selectedContact) {
@@ -217,6 +194,11 @@ public class Main {
         System.out.println(selectedContact.getInfo());
     }
 
+    private static void deleteAction(ListOfContacts list) {
+        list.remove(getSelectedContact());
+        deselectContact();
+    }
+
     private static String getActions(AppStates state) {
         String str = "";
 
@@ -236,6 +218,34 @@ public class Main {
         }
 
         return str;
+    }
+
+    private static void saveApp(ListOfContacts data, File file) throws IOException {
+        if (!file.exists()) {
+            if (!file.createNewFile()) {
+                return;
+            }
+        }
+
+        try (var outputStream = new ObjectOutputStream(
+                 new BufferedOutputStream(new FileOutputStream(file)))) {
+            outputStream.writeObject(data);
+        } catch (FileNotFoundException e) {
+            System.out.println("Wrong file name!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static int getIndex(String str) {
+        int index;
+        try {
+            index = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            System.out.println("You have to input number");
+            index = 0;
+        }
+        return index - 1;
     }
 
     private static boolean selectContact(Contact contact) {
