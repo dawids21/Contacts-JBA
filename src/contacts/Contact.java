@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 public abstract class Contact implements Serializable {
 
+    public static final String NO_DATA_MSG = "[no data]";
+
     private static final long serialVersionUID = -7806631094278739018L;
     private final LocalDateTime timeCreated;
     private LocalDateTime timeEdited;
