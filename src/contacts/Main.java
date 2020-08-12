@@ -36,10 +36,7 @@ public class Main {
                             setState(AppStates.LIST);
                             break;
                         case "search":
-                            System.out.print("Enter search query: ");
-                            var query = input.nextLine();
-                            searchEngine.search(query);
-                            searchEngine.print();
+                            queryAction(input, searchEngine);
                             setState(AppStates.SEARCH);
                             break;
                         case "count":
@@ -98,6 +95,13 @@ public class Main {
             }
             System.out.println();
         }
+    }
+
+    private static void queryAction(Scanner input, SearchEngine searchEngine) {
+        System.out.print("Enter search query: ");
+        var query = input.nextLine();
+        searchEngine.search(query);
+        searchEngine.print();
     }
 
     private static int getIndex(String str) {
