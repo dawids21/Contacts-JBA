@@ -185,6 +185,7 @@ public class Main {
                 record = organizationFactory.createContact(input);
                 break;
             default:
+                System.out.println("Wrong contact type!");
                 record = null;
                 break;
         }
