@@ -77,7 +77,7 @@ public class Organization extends Contact {
                 fieldValue = getAddress();
                 break;
             case "number":
-                fieldValue = getPhoneNumber();
+                fieldValue = hasNumber() ? getPhoneNumber() : "[no data]";
                 break;
         }
 
