@@ -87,7 +87,7 @@ public class Main {
                     } else {
                         int index = getIndex(action);
                         if (index != -1) {
-                            if (selectContact(searchEngine.getResults(), index)) {
+                            if (selectContact(searchEngine.getResult(index))) {
                                 System.out.println(getSelectedContact().getInfo());
                                 setState(AppStates.RECORD);
                             } else {
@@ -122,7 +122,7 @@ public class Main {
                         int index = getIndex(action);
 
                         if (index != -1) {
-                            if (selectContact(listOfContacts, index)) {
+                            if (selectContact(listOfContacts.get(index))) {
                                 System.out.println(getSelectedContact().getInfo());
                                 setState(AppStates.RECORD);
                             } else {
@@ -238,8 +238,8 @@ public class Main {
         return str;
     }
 
-    private static boolean selectContact(ListOfContacts list, int index) {
-        selectedContact = list.get(index);
+    private static boolean selectContact(Contact contact) {
+        selectedContact = contact;
         return selectedContact != null;
     }
 

@@ -30,7 +30,7 @@ public class SearchEngine {
         results.print();
     }
 
-    public ListOfContacts getResults() {
-        return results;
+    public Contact getResult(int index) {
+        return results.get(index);
     }
 }
