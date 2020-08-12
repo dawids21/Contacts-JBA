@@ -5,6 +5,9 @@ import java.time.format.DateTimeParseException;
 
 public class Person extends Contact {
 
+    private static final String[] FIELD_NAMES =
+             {"Name", "Surname", "Birth", "Gender", "Number"};
+    private static final long serialVersionUID = 1061845763226119918L;
     private String name;
     private String surname;
     private LocalDate birthDate;
@@ -27,8 +30,16 @@ public class Person extends Contact {
         this.name = name;
     }
 
+    public boolean hasName() {
+        return !getName().equals("");
+    }
+
     public String getSurname() {
         return surname;
+    }
+
+    public boolean hasSurname() {
+        return !getSurname().equals("");
     }
 
     public void setSurname(String surname) {
@@ -50,6 +61,10 @@ public class Person extends Contact {
         return success;
     }
 
+    public boolean hasBirthDate() {
+        return birthDate != null;
+    }
+
     public Genders getGender() {
         return gender;
     }
@@ -69,6 +84,10 @@ public class Person extends Contact {
         return success;
     }
 
+    public boolean hasGender() {
+        return gender != null && getGender() != Genders.INVALID;
+    }
+
     enum Genders {
         MALE, FEMALE, INVALID;
 
@@ -80,7 +99,7 @@ public class Person extends Contact {
             } else if (this == FEMALE) {
                 str = "Female";
             } else {
-                str = "[no data]";
+                str = "Invalid";
             }
             return str;
         }
@@ -88,22 +107,20 @@ public class Person extends Contact {
 
     @Override
     public String getInfo() {
-        return "Name: " + getName() + "\nSurname: " + getSurname() + "\nBirth date: " +
-               (getBirthDate() != null ? getBirthDate() : "[no data]") + "\nGender: " +
-               getGender() + "\nNumber: " +
-               (hasNumber() ? getPhoneNumber() : "[no data]") + "\nTime created: " +
-               getTimeCreated() + "\nTime last edit: " + getTimeEdited();
+        return String.format(
+                 "Name: %s\nSurname: %s\nBirth date: %s\nGender: %s\nNumber: %s\nTime created: %s\nTime last edit: %s",
+                 (hasName() ? getName() : Contact.NO_DATA_MSG),
+                 (hasSurname() ? getSurname() : Contact.NO_DATA_MSG),
+                 (hasBirthDate() ? getBirthDate() : Contact.NO_DATA_MSG),
+                 (hasGender() ? getGender() : Contact.NO_DATA_MSG),
+                 (hasNumber() ? getPhoneNumber() : Contact.NO_DATA_MSG),
+                 getTimeCreated().toString(),
+                 getTimeEdited().toString());
     }
 
     @Override
     public String[] getFieldsNames() {
-        var names = new String[5];
-        names[0] = "Name";
-        names[1] = "Surname";
-        names[2] = "Birth";
-        names[3] = "Gender";
-        names[4] = "Number";
-        return names;
+        return FIELD_NAMES;
     }
 
     @Override
@@ -135,20 +152,20 @@ public class Person extends Contact {
 
         switch (fieldName.toLowerCase()) {
             case "name":
-                fieldValue = getName();
+                fieldValue = hasName() ? getName() : Contact.NO_DATA_MSG;
                 break;
             case "surname":
-                fieldValue = getSurname();
+                fieldValue = hasSurname() ? getSurname() : Contact.NO_DATA_MSG;
                 break;
             case "birth":
                 fieldValue =
-                         getBirthDate() != null ? getBirthDate().toString() : "[no data]";
+                         hasBirthDate() ? getBirthDate().toString() : Contact.NO_DATA_MSG;
                 break;
             case "gender":
-                fieldValue = getGender() != Genders.INVALID ? getGender().toString() : "[no data]";
+                fieldValue = hasGender() ? getGender().toString() : Contact.NO_DATA_MSG;
                 break;
             case "number":
-                fieldValue = hasNumber() ? getPhoneNumber() : "[no data]";
+                fieldValue = hasNumber() ? getPhoneNumber() : Contact.NO_DATA_MSG;
                 break;
         }
 
