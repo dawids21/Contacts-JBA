@@ -1,9 +1,11 @@
 package contacts;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public abstract class Contact {
+public abstract class Contact implements Serializable {
 
+    private static final long serialVersionUID = -7806631094278739018L;
     private final LocalDateTime timeCreated;
     private LocalDateTime timeEdited;
     private String phoneNumber;
