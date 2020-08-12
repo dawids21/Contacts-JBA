@@ -1,11 +1,13 @@
 package contacts;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Spliterator;
 
-public class ListOfContacts implements Iterable<Contact> {
+public class ListOfContacts implements Iterable<Contact>, Serializable {
 
+    private static final long serialVersionUID = 6239461410088048045L;
     ArrayList<Contact> records = new ArrayList<>();
 
     public ListOfContacts() {
