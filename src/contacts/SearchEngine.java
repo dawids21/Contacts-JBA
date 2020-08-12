@@ -26,10 +26,6 @@ public class SearchEngine {
         results.print();
     }
 
-    public Contact get(int index) {
-        return results.get(index);
-    }
-
     public ListOfContacts getResults() {
         return results;
     }
