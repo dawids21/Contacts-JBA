@@ -1,8 +1,10 @@
 package contacts;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Spliterator;
 
-public class ListOfContacts {
+public class ListOfContacts implements Iterable<Contact> {
 
     ArrayList<Contact> records = new ArrayList<>();
 
@@ -42,5 +44,15 @@ public class ListOfContacts {
 
     public int size() {
         return records.size();
+    }
+
+    @Override
+    public Iterator<Contact> iterator() {
+        return records.iterator();
+    }
+
+    @Override
+    public Spliterator<Contact> spliterator() {
+        return records.spliterator();
     }
 }
