@@ -40,10 +40,12 @@ public class Organization extends Contact {
 
     @Override
     public String getInfo() {
-        return String.format("Name: %s\nAddress: %s\nNumber: %s\n",
-                             (hasName() ? getName() : Contact.NO_DATA_MSG),
-                             (hasAddress() ? getAddress() : Contact.NO_DATA_MSG),
-                             (hasNumber() ? getPhoneNumber() : Contact.NO_DATA_MSG));
+        return String.format(
+                 "Organization name: %s\nAddress: %s\nNumber: %s\nTime created: %s\nTime last edit: %s",
+                 (hasName() ? getName() : Contact.NO_DATA_MSG),
+                 (hasAddress() ? getAddress() : Contact.NO_DATA_MSG),
+                 (hasNumber() ? getPhoneNumber() : Contact.NO_DATA_MSG),
+                 getTimeCreated().toString(), getTimeEdited().toString());
     }
 
     @Override
