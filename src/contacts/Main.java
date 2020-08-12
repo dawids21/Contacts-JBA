@@ -76,17 +76,15 @@ public class Main {
                     if ("back".equals(action)) {
                         setState(AppStates.MENU);
                     } else {
-                        int index;
-                        try {
-                            index = Integer.parseInt(action);
-                        } catch (NumberFormatException e) {
-                            System.out.println("You have to input number");
-                            index = 0;
-                        }
+                        int index = getIndex(action);
 
-                        if (index != 0 && selectContact(listOfContacts, index - 1)) {
-                            System.out.println(getSelectedContact().getInfo());
-                            setState(AppStates.RECORD);
+                        if (index != -1) {
+                            if (selectContact(listOfContacts, index)) {
+                                System.out.println(getSelectedContact().getInfo());
+                                setState(AppStates.RECORD);
+                            } else {
+                                System.out.println("Wrong index!");
+                            }
                         }
                     }
                     break;
@@ -94,7 +92,16 @@ public class Main {
             System.out.println();
         }
     }
+
+    private static int getIndex(String str) {
+        int index;
+        try {
+            index = Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            System.out.println("You have to input number");
+            index = 0;
         }
+        return index - 1;
     }
 
     private static void addAction(Scanner input, ListOfContacts list) {
