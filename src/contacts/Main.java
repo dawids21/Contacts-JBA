@@ -121,6 +121,7 @@ public class Main {
         }
         if (record != null) {
             list.add(record);
+            System.out.println("The record added.");
         }
     }
 

@@ -13,7 +13,6 @@ public class ListOfContacts implements Iterable<Contact> {
 
     public void add(Contact record) {
         records.add(record);
-        System.out.println("The record added.");
     }
 
     public Contact get(int index) {
