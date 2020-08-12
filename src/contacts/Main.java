@@ -53,7 +53,21 @@ public class Main {
                     }
                     break;
                 case SEARCH:
-                    setState(AppStates.MENU);
+                    if ("back".equals(action)) {
+                        setState(AppStates.MENU);
+                    } else if ("again".equals(action)) {
+                        queryAction(input, searchEngine);
+                    } else {
+                        int index = getIndex(action);
+                        if (index != -1) {
+                            if (selectContact(searchEngine.getResults(), index)) {
+                                System.out.println(getSelectedContact().getInfo());
+                                setState(AppStates.RECORD);
+                            } else {
+                                System.out.println("Wrong index!");
+                            }
+                        }
+                    }
                     break;
                 case RECORD:
                     switch (action) {
