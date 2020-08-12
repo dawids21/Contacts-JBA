@@ -1,5 +1,6 @@
 package contacts;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -14,9 +15,28 @@ public class Main {
     private static Contact selectedContact = null;
 
     public static void main(String[] args) {
+        File dbFile = null;
+        ListOfContacts listOfContacts = null;
+        if (args.length >= 1) {
+            dbFile = new File(args[0]);
+        }
+
+        if (dbFile != null && dbFile.exists()) {
+            try (var inputStream = new ObjectInputStream(
+                     new BufferedInputStream(new FileInputStream(dbFile)))) {
+                listOfContacts = (ListOfContacts) inputStream.readObject();
+            } catch (ClassNotFoundException | IOException e) {
+                e.printStackTrace();
+                listOfContacts = null;
+            }
+        }
+
+        if (listOfContacts == null) {
+            listOfContacts = new ListOfContacts();
+        }
+
         setState(AppStates.MENU);
         final var input = new Scanner(System.in);
-        final var listOfContacts = new ListOfContacts();
         final var searchEngine = new SearchEngine(listOfContacts);
 
         while (true) {
@@ -45,6 +65,13 @@ public class Main {
                                      " records.");
                             break;
                         case "exit":
+                            if (dbFile != null) {
+                                try {
+                                    saveApp(listOfContacts, dbFile);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
                             System.exit(0);
                             break;
                         default:
@@ -108,6 +135,23 @@ public class Main {
                     break;
             }
             System.out.println();
+        }
+    }
+
+    private static void saveApp(ListOfContacts data, File file) throws IOException {
+        if (!file.exists()) {
+            if (!file.createNewFile()) {
+                return;
+            }
+        }
+
+        try (var outputStream = new ObjectOutputStream(
+                 new BufferedOutputStream(new FileOutputStream(file)))) {
+            outputStream.writeObject(data);
+        } catch (FileNotFoundException e) {
+            System.out.println("Wrong file name!");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
