@@ -141,13 +141,14 @@ public class Person extends Contact {
                 fieldValue = getSurname();
                 break;
             case "birth":
-                fieldValue = getBirthDate().toString();
+                fieldValue =
+                         getBirthDate() != null ? getBirthDate().toString() : "[no data]";
                 break;
             case "gender":
-                fieldValue = getGender().toString();
+                fieldValue = getGender() != Genders.INVALID ? getGender().toString() : "[no data]";
                 break;
             case "number":
-                fieldValue = getPhoneNumber();
+                fieldValue = hasNumber() ? getPhoneNumber() : "[no data]";
                 break;
         }
 
