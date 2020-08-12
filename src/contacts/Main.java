@@ -17,6 +17,7 @@ public class Main {
         setState(AppStates.MENU);
         final var input = new Scanner(System.in);
         final var listOfContacts = new ListOfContacts();
+        final var searchEngine = new SearchEngine(listOfContacts);
 
         while (true) {
             System.out.print("[" + getState().name()
@@ -35,6 +36,11 @@ public class Main {
                             setState(AppStates.LIST);
                             break;
                         case "search":
+                            System.out.print("Enter search query: ");
+                            var query = input.nextLine();
+                            searchEngine.search(query);
+                            searchEngine.print();
+                            setState(AppStates.SEARCH);
                             break;
                         case "count":
                             System.out.println(
@@ -50,6 +56,7 @@ public class Main {
                     }
                     break;
                 case SEARCH:
+                    setState(AppStates.MENU);
                     break;
                 case RECORD:
                     switch (action) {
