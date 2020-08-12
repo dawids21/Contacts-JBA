@@ -170,14 +170,8 @@ public class Main {
     }
 
     private static boolean selectContact(ListOfContacts list, int index) {
-        boolean success = true;
-        if (index >= 0 && index <= list.size()) {
-            selectedContact = list.get(index);
-        } else {
-            selectedContact = null;
-            success = false;
-        }
-        return success;
+        selectedContact = list.get(index);
+        return selectedContact != null;
     }
 
     private static void deselectContact() {
